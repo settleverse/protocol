@@ -53,6 +53,8 @@ contract STLRManagerV1 is Ownable, ReentrancyGuard {
         nonReentrant 
     {
         require(count > 0, 'Count must be more than zero');
+        require(settlementType >= 0 && settlementType < stlrDao.settCount(), 'Invalid settlement type');
+
         (, , uint stlrAmount, uint usdcAmount) = stlrDao.settlementTypes(settlementType);
         uint _stlr = count * stlrAmount * 10 ** stlr.decimals();
         uint _usdc = count * usdcAmount * 10 ** usdc.decimals();
@@ -83,6 +85,8 @@ contract STLRManagerV1 is Ownable, ReentrancyGuard {
         payFee(msg.sender)
     {
         require(count > 0, 'Count must be more than zero');
+        require(settlementType >= 0 && settlementType < stlrDao.settCount(), 'Invalid settlement type');
+        
         uint rewards = _claim(msg.sender, true);
         (, , uint stlrAmount, uint usdcAmount) = stlrDao.settlementTypes(settlementType);
         uint _stlr = count * stlrAmount * 10 ** stlr.decimals();

@@ -5,6 +5,7 @@ interface ISettleverseDao {
     function treasury() external view returns (address);
     function settings() external view returns (address);
     function settlementTypes(uint) external view returns (bool, uint, uint, uint);
+    function settCount() external view returns (uint);
     function accounts(address) external view returns (bool, uint, uint, uint, uint, uint, uint);
 
     function declare(address, uint) external;
