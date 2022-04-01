@@ -31,6 +31,7 @@ contract STLRPurchaseHelperV1 is Ownable {
         usdc = IERC20Metadata(settings.USDC());
 
         // BSC TESTNET ROUTER: 0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3
+        // FANTOM TESTNET ROUTER: 0xa6AD18C2aC47803E193F75c3677b14BF19B94883
         router = IUniswapV2Router02(_router);
         factory = IUniswapV2Factory(router.factory());
         if (factory.getPair(address(stlr), address(usdc)) == address(0)) {
